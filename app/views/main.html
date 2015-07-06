@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>My todos {{ getSorterData('priority') }}</h2>
+
+  <p></p>
+
+  <div class="row">
+      <div class="headline">
+        <div style="width: 5%; float:left"> &nbsp;</div>
+        <div style="width: 57%; float:left">Name</div>
+
+        <div style="width: 13%; float:left" ng-click="sortBy('priority')">Priority <img class="sorter-img" ng-if="getSorterImage('priority')" ng-src="{{ getSorterImage('priority') }}"></div>
+        <div style="width: 25%; float:left" ng-click="sortBy('time')">Time <img class="sorter-img" ng-if="getSorterImage('time')" ng-src="{{ getSorterImage('time') }}"></div>
+      </div>
+    </div>
+
+  <!-- Todos list -->
+  <div ui-sortable ng-model="todos">
+    <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+      <input type="text" ng-model="todo.name" class="form-control"  style="width: 65%">
+      <input type="number" ng-model="todo.priority" class="form-control"  style="width: 10%">
+      <input type="time" ng-model="todo.time" class="form-control"  style="width: 25%">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
+      </span>
+    </p>
+  </div>
+  <input type="submit" class="btn btn-primary" ng-click="sortBy('priority')" value="Sort by priority">
+  <input type="submit" class="btn btn-primary" ng-click="sortBy('time')" value="Sort by time">
+  <input type="submit" class="btn btn-danger" ng-click="removeAll()" value="Remove all">
+
+
+<h4> Add new</h4>
+  <!-- Todos input -->
+  <form role="form" ng-submit="addTodo()">
+
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="todo.name" placeholder="What needs to be done?" class="form-control" style="width: 65%">
+        <input type="number" ng-model="todo.priority" class="form-control"  style="width: 10%">
+        <input type="time" ng-model="todo.time" class="form-control" style="width: 25%">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Add">
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
