@@ -1,35 +1,39 @@
-// function SortService() {
+app.service('SortService', [function(){
 
-//   // this.direction = 'asc';
-//   // this.property = 'priority';
-//   // this.items = [];
 
-//   // this.setItems = setItems;
-//   // this.setDirection = setDirection;
+    this.direction = 'asc';
+    this.property = 'priority';
+    this.items = [];
 
-//   // function setItems(items) {
-//   //   this.items = items;
-//   // }
-  
-//   // function setDirection(direction) {
-//   //   this.direction = direction;
-//   // }
-  
-//   // function setProperty(property) {
-//   //   this.property = property;
-//   // }
+    this.setItems = setItems;
+    this.sort = sort;
+    this.sortBy = sortBy;
 
-//   // function sort() {
-//   //   if (!this.property){
-//   //       return;
-//   //   }
+    function setItems(items) {
+        this.items = items;
+        //this.sort(); // AUTO-Sorting
+    }
 
-//   //   this.items = this.items.sort(function(a,b) { 
-//   //     var aMoreThanB = a[this.property] > b[this.property];
-//   //     return (this.direction == 'asc' ? aMoreThanB : !aMoreThanB) });
-//   //   }
-// }
+    function sortBy(property){
+        if (this.property == property){
+            this.direction = (this.direction == 'asc' ? 'desc' : 'asc');
+        }else{
+            this.property = property;
+            this.direction = 'asc';
+        }
+        this.sort();
 
-// angular.module('mytodoApp', [])
-//   .service('SortService', function(){});
+    }
 
+    function sort() {
+        var property = this.property;
+        var direction = this.direction;
+        if (!property){
+            return;
+        }
+
+        this.items = this.items.sort(function(a,b) {
+            var aMoreThanB = a[property] > b[property];
+            return (direction == 'asc' ? aMoreThanB : !aMoreThanB) });
+    }
+}]);
