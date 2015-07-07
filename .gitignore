@@ -7,3 +7,6 @@ app/components
 # Ignore all files in .idea folder
 .idea/
 /.idea/*
+
+.DS_Store
+app/.DS_Store
