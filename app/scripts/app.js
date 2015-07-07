@@ -40,7 +40,7 @@ var app = angular.module('mytodoApp', [
 
   function setItems(items) {
     this.items = items;
-    this.sort(); // AUTO-Sorting
+    //this.sort(); // AUTO-Sorting
   }
   
   function sortBy(property){
