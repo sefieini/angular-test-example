@@ -16,21 +16,16 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should have no items to start', function () {
+
+
+  it('#init', function () {
+    // Wrong :
+    //expect(scope.todo).toBe({name: '', time: '00:00', priority: 0});
+
+    // Right :
+    testUtils.expectAlike(scope.todo, {name: '', time: '00:00', priority: 0})
     expect(scope.todos.length).toBe(0);
+      //scope.sortingSetting.. ?
   });
-
-  it('should add items to the list', function () {
-      scope.todo = 'Test 1';
-      scope.addTodo();
-      expect(scope.todos.length).toBe(1);
-    });
-
-  it('should add items to the list', function () {
-      scope.todo = 'Test 1';
-      scope.addTodo();
-      scope.removeTodo(0);
-      expect(scope.todos.length).toBe(0);
-    });
 
 });
