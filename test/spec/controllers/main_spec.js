@@ -9,10 +9,10 @@ describe('Controller: MainCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, localStorageService, SortService) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      $scope: scope, localStorageService: localStorageService
     });
   }));
 
