@@ -9,9 +9,8 @@ angular.module('mytodoApp')
     $scope.todos = todosInStore || [];
 
     $scope.$watch('todos', function () {
-      SortService.setItems($scope.todos);
-      $scope.sortAll();
-      localStorageService.add('todos', $scope.todos);
+        SortService.setItems($scope.todos);
+        localStorageService.add('todos', $scope.todos);
     }, true);
 
     // Uncomment if you are disabling persistence
