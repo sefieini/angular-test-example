@@ -5,14 +5,14 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('mytodoApp'));
 
-  var MainCtrl,
-    scope;
+  var MainCtrl, SortService, scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, localStorageService, SortService) {
+  beforeEach(inject(function ($controller, $rootScope, localStorageService, _SortService_) {
     scope = $rootScope.$new();
+      SortService = _SortService_;
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope, localStorageService: localStorageService
+      $scope: scope, localStorageService: localStorageService, SortService: SortService
     });
   }));
 
