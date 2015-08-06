@@ -18,7 +18,7 @@ describe('Service: SortService', function () {
     it('#init', function () {
         expect(SortService.direction).toBe('asc');
         expect(SortService.property).toBe('priority');
-        testUtils.expectAlike(SortService.items, []);
+        expect(SortService.items).toEqual([]);
     });
 
     it('#setItems', function () {
